@@ -5,7 +5,8 @@ import _ from 'lodash'
 import Preloader from './components/Preloader'
 import {loadAllData} from './DataHandling'
 import CountyMap from './components/CountyMap/CountyMap';
-
+import Histogram from './components/Histogram/Histogram'
+import './App.css'
 class App extends Component {
 
   state = {
@@ -51,13 +52,25 @@ class App extends Component {
           <div className="App contaner">
             <svg width="1100" height="500">
               <CountyMap usTopoJson={this.state.usTopoJson}
-              USstateNames={this.state.USstateNames}
-              values={countyValues}
-              x={0}
-              y={0}
-              width={500}
-              height={500}
-              zoom={zoom} />
+                USstateNames={this.state.USstateNames}
+                values={countyValues}
+                x={0}
+                y={0}
+                width={500}
+                height={500}
+                zoom={zoom} 
+              />
+              <Histogram 
+                bins={10}
+                width={500}
+                height={500}
+                x="500"
+                y='10'
+                data={filteredSalaries}
+                axisMargin={83}
+                bottomMargin={5}
+                value={d => d.base_salary}
+              />
             </svg>
           </div>
       </div>
